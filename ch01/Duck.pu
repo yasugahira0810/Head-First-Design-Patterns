@@ -1,26 +1,39 @@
-@startuml
-abstract class Duck {
-  {field} FlyBehavior flyBehavior
-  {field} QuackBehavior quackBehavior
-  {method} performQuack()
-  {method} swim()
-  {method} display()
-  {method} performFly()
+@startuml Duck
+
+package クライアント {
+  abstract class Duck {
+    {field} FlyBehavior flyBehavior
+    {field} QuackBehavior quackBehavior
+    {method} performQuack()
+    {method} swim()
+    {method} display()
+    {method} performFly()
+  }
+
+  class MallardDuck {
+    {method} display()
+  }
+
+  Duck <|-- MallardDuck
 }
 
-interface FlyBehavior {
-  {method} fly()
+package カプセル化された飛ぶ振る舞い {
+  interface FlyBehavior {
+    {method} fly()
+  }
+
+  class FlyWithWings {
+    {method} fly()
+  }
+
+  class FlyNoWay {
+    {method} fly()
+  }
+
+  FlyBehavior <|.. FlyWithWings
+  FlyBehavior <|.. FlyNoWay
 }
 
-class FlyWithWings {
-  {method} fly()
-}
-
-class FlyNoWay {
-  {method} fly()
-}
-
-FlyBehavior <|.. FlyWithWings
-FlyBehavior <|.. FlyNoWay
+FlyBehavior <.. Duck
 
 @enduml
