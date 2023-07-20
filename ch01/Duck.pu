@@ -1,0 +1,26 @@
+@startuml
+abstract class Duck {
+  {field} FlyBehavior flyBehavior
+  {field} QuackBehavior quackBehavior
+  {method} performQuack()
+  {method} swim()
+  {method} display()
+  {method} performFly()
+}
+
+interface FlyBehavior {
+  {method} fly()
+}
+
+class FlyWithWings {
+  {method} fly()
+}
+
+class FlyNoWay {
+  {method} fly()
+}
+
+FlyBehavior <|.. FlyWithWings
+FlyBehavior <|.. FlyNoWay
+
+@enduml
