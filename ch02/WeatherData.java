@@ -1,5 +1,8 @@
 package ch02;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WeatherData implements Subject{
 
   private List<Observer> observers;
